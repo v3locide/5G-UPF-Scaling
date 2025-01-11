@@ -48,11 +48,11 @@ start_traffic(){
 
         # Starts iperf with half the original traffic on URANSIM2 (client) and stores the traffic output in "logs/UE2_traffic.log"
         echo "Started iperf client on URANSIM2 (check the logs)."
-        kubectl exec -i "$1" -- bash -c "iperf -i 1 -B "$URANSIM2_INT_ADDR" -c "$UPF2_ADDR" -b $4M" > logs/UE2_traffic.log &
+        kubectl exec -i "$1" -- bash -c "iperf -i 1 -B "$URANSIM2_INT_ADDR" -c "$UPF2_ADDR" -b ${4}M" > logs/UE2_traffic.log &
 
         # Restarts iperf traffic on URANSIM with half the original traffic and stores the traffic output in "logs/UE1_traffic.log"
         echo "Restarted iperf client on URANSIM (check the logs)."
-        kubectl exec -i "$3" -- bash -c "iperf -i 1 -B "$URANSIM1_INT_ADDR" -c "$UPF1_ADDR" -b $4M" > logs/UE1_traffic.log
+        kubectl exec -i "$3" -- bash -c "iperf -i 1 -B "$URANSIM1_INT_ADDR" -c "$UPF1_ADDR" -b ${4}M" > logs/UE1_traffic.log
         
         # Wait for iperf traffic to terminate properly
         while true; do 
@@ -148,9 +148,10 @@ kubectl exec -n "$NAMESPACE" "$UPF1" -- $COMMAND | while read -r line; do
         # Divide traffic by half
         HALF_TRAFFIC=$(echo "$BANDWIDTH / 2" | bc -l)
         HALF_TRAFFIC=$(printf "%.0f" $HALF_TRAFFIC)
+        echo "New traffic rate: $HALF_TRAFFIC"
 
         # Start the iperf traffic between UPFs and URANSIMs with half the original throughput
-        start_traffic $URANSIM2 $UPF2 $URANSIM1 ${HALF_TRAFFIC}
+        start_traffic $URANSIM2 $UPF2 $URANSIM1 $HALF_TRAFFIC
         sleep 1
 
       else
@@ -164,6 +165,7 @@ kubectl exec -n "$NAMESPACE" "$UPF1" -- $COMMAND | while read -r line; do
         # Divide traffic by half
         HALF_TRAFFIC=$(echo "$BANDWIDTH / 2" | bc -l)
         HALF_TRAFFIC=$(printf "%.0f" $HALF_TRAFFIC)
+        echo "New traffic rate: $HALF_TRAFFIC"
 
         # Deploy UPF2 and URANSIM2 with helm and kubectl
         echo "Deploying uransim2 and upf2..."
@@ -200,7 +202,7 @@ kubectl exec -n "$NAMESPACE" "$UPF1" -- $COMMAND | while read -r line; do
         sleep 1
 
         # Start the ne iperf traffic between UPFs and URANSIMs with half the original throughput
-        start_traffic $URANSIM2 $UPF2 $URANSIM1 ${HALF_TRAFFIC}
+        start_traffic $URANSIM2 $UPF2 $URANSIM1 $HALF_TRAFFIC
         sleep 1
       fi
      fi
