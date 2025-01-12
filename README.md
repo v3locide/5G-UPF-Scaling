@@ -63,3 +63,6 @@ This project was tested (and passed all the throughput tests) in an ideal enviro
 - UERANSIM failing to get an IP from the 5G network.
 - Failed pings from UERANSIMs and their respective UPFs.
 - Connection timeouts with iperf.
+
+## Deme:
+- I made a demo video so you can see how the UPF scaling works: https://youtu.be/vMBYiu13dcg
