@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Constant vars
+# Constants
 NAMESPACE=${1:-default}  # Default namespace is 'default'
 URANSIM1_INT_ADDR="12.1.1.2"
 URANSIM_INT_NAME="uesimtun0"
