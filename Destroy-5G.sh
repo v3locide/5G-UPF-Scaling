@@ -2,7 +2,7 @@
 
 echo "uninstalling 5G network..."
 
-cd oai-5g-core
+cd OAI-5G/oai-5g-core
 
 helm uninstall mysql
 sleep 1
