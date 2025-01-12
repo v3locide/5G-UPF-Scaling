@@ -23,7 +23,7 @@ The objective of this project is to demonstrate dynamic scaling of the User Plan
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/5g-upf-scaling.git
+   git clone https://github.com/v3locide/5g-upf-scaling.git
    cd 5g-upf-scaling
 2. Initialize the project:
    ```bash
