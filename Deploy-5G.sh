@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# Edit the path to match the files location
+OAI_CORE_PATH=OAI-5G/oai-5g-core
+
 isDeployed=0
 
 echo "Deploying 5G network..."
 sleep 2
 
-cd OAI-5G/oai-5g-core
+cd $OAI_CORE_PATH
 
 helm install mysql mysql/
 while [ $isDeployed -eq 0 ]; do
