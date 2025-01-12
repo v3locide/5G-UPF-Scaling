@@ -64,5 +64,5 @@ This project was tested (and passed all the throughput tests) in an ideal enviro
 - Failed pings from UERANSIMs and their respective UPFs.
 - Connection timeouts with iperf.
 
-## Deme:
+## Demo:
 - I made a demo video so you can see how the UPF scaling works: https://youtu.be/vMBYiu13dcg
