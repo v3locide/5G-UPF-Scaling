@@ -5,7 +5,7 @@ isDeployed=0
 echo "Deploying 5G network..."
 sleep 2
 
-cd oai-5g-core
+cd OAI-5G/oai-5g-core
 
 helm install mysql mysql/
 while [ $isDeployed -eq 0 ]; do
