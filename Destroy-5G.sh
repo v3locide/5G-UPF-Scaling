@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Edit the path to match the files location
+OAI_CORE_PATH=OAI-5G/oai-5g-core
+
 echo "uninstalling 5G network..."
 
-cd OAI-5G/oai-5g-core
+cd $OAI_CORE_PATH
 
 helm uninstall mysql
 sleep 1
