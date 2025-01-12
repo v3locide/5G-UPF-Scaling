@@ -6,6 +6,9 @@ URANSIM1_INT_ADDR="12.1.1.2"
 URANSIM_INT_NAME="uesimtun0"
 UPF1_ADDR="12.1.1.4"
 UPF2_ADDR="12.1.2.11"
+# Edit the paths to match the files location
+UPF2_PATH=OAI-5G/oai-5g-core/oai-upf2
+URANSIM2_PATH=OAI-5G/oai-ueransim2.yaml
 
 # Command to run iperf on UPF (server)
 COMMAND="iperf -s -i 1 -B "$UPF1_ADDR""
@@ -120,7 +123,7 @@ kubectl exec -n "$NAMESPACE" "$UPF1" -- $COMMAND | while read -r line; do
         if [[ -n "$(kubectl get pods | grep 'upf2')" ]]; then
           helm uninstall upf2
           sleep 1
-          kubectl delete -f oai-ueransim2.yaml
+          kubectl delete -f $URANSIM2_PATH
           sleep 1
 
           # Wait for the termination of and UPF2 and URANSIM2
@@ -169,10 +172,10 @@ kubectl exec -n "$NAMESPACE" "$UPF1" -- $COMMAND | while read -r line; do
 
         # Deploy UPF2 and URANSIM2 with helm and kubectl
         echo "Deploying uransim2 and upf2..."
-        helm install upf2 oai-5g-core/oai-upf2
+        helm install upf2 $UPF2_PATH
         sleep 3
         echo "Deployed upf2."
-        kubectl apply -f oai-ueransim2.yaml
+        kubectl apply -f $URANSIM2_PATH
         sleep 3
         UE2_DEP=0
         while [ $UE2_DEP -eq 0 ]; do
