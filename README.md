@@ -59,7 +59,7 @@ In order to scale the UPF instances in your 5G network based on incoming traffic
 
 ## Limitations
 
-This project was tested (and passed all the throughput tests) in an ideal environment with minimal server overloads. If you're deploying this project in an overloaded server you might face the following issues:
+This project was tested (and passed all the throughput tests) in an ideal environment with minimal server overload. If you're deploying this project in an overloaded server you might face the following issues:
 - UERANSIM failing to get an IP from the 5G network.
 - Failed pings from UERANSIMs and their respective UPFs.
 - Connection timeouts with iperf.
