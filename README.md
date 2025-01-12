@@ -46,7 +46,7 @@ The objective of this project is to demonstrate dynamic scaling of the User Plan
 ## UPF Auto-Scaling:
 
 In order to scale the UPF instances in your 5G network based on incoming traffic:
-1. Open a new terminal at the root of this project.
+1. Open a new terminal **__at the root__** of this project.
 2. Run the **Scaler.sh** script and wait for it to start an iperf server:
    ```bash
    bash Scaler.sh
